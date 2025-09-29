@@ -80,69 +80,7 @@
     <p>📞 <a href="tel:+8801715371713" style="color:white;">01715371713</a></p>
     <a class="whatsapp-btn" href="https://wa.me/8801568501525" target="_blank">💬 Chat on WhatsApp</a>
   </header>
-<!-- ================= Products Section Start ================= -->
-<section id="products" style="padding:50px 20px; background-color:#f9f9f9; font-family: Arial, sans-serif;">
-  <h2 style="text-align:center; font-size:34px; margin-bottom:40px; color:#1a1a1a;">আমাদের পণ্যসমূহ</h2>
 
-  <!-- Search Box -->
-  <div style="text-align:center; margin-bottom:40px;">
-    <input type="text" id="searchBox" placeholder="পণ্য খুঁজুন..."
-           style="width:80%; max-width:500px; padding:14px 16px; font-size:16px; border:1px solid #ccc; border-radius:10px; outline:none; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
-  </div>
-
-  <!-- Product Cards Grid -->
-  <div id="productContainer" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:25px;">
-    <div class="product-card">আটাশ চাউল</div>
-    <div class="product-card">উনত্রিশ চাউল</div>
-    <div class="product-card">মাধবী চাউল</div>
-    <div class="product-card">কাটারী চাউল</div>
-    <div class="product-card">গুটি (মোটা) চাউল</div>
-    <div class="product-card">ভাঙ্গা চাল (খুদ)</div>
-    <div class="product-card">কুঁড়া</div>
-  </div>
-</section>
-<!-- ================= Products Section End ================= -->
-
-<!-- ================= CSS ================= -->
-<style>
-  .product-card {
-    background-color: #ffffff;
-    padding: 22px;
-    text-align: center;
-    font-size: 18px;
-    color: #333;
-    border-radius: 14px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    cursor: pointer;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-  }
-
-  .product-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 8px 18px rgba(0,0,0,0.15);
-  }
-
-  @media (max-width:500px){
-    #searchBox { width:95%; }
-  }
-</style>
-
-<!-- ================= Working JavaScript ================= -->
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    const input = document.getElementById('searchBox');
-    const container = document.getElementById('productContainer');
-    const products = container.getElementsByClassName('product-card');
-
-    input.addEventListener('keyup', function() {
-      let filter = input.value.toUpperCase();
-      for (let i = 0; i < products.length; i++) {
-        let text = products[i].textContent || products[i].innerText;
-        products[i].style.display = text.toUpperCase().includes(filter) ? "block" : "none";
-      }
-    });
-  });
-</script>
   <section>
     <h2>About Us</h2>
     <p>
