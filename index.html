@@ -135,6 +135,7 @@
       ন্যায্য দামে চাল, ভাঙ্গা চাল ও অন্যান্য উপ-পণ্য পাওয়া যায়।
     </p>
   <section>
+  <section>
   <h2>Our Products (25kg Bag)</h2>
   <div class="products">
     <div class="product" onclick="openModal('atash')">
@@ -175,8 +176,8 @@
   </div>
 </section>
 
-<!-- MODALS -->
-<div id="modal" class="modal">
+<!-- MODAL -->
+<div id="modal" class="modal" onclick="backgroundClick(event)">
   <div class="modal-content">
     <span class="close" onclick="closeModal()">&times;</span>
     <img id="modal-img" src="" alt="">
@@ -186,108 +187,47 @@
   </div>
 </div>
 
-<style>
-/* Modal Styling */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 2000;
-  left: 0; top: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.6);
-  justify-content: center;
-  align-items: center;
-}
-.modal-content {
-  background: #fff;
-  padding: 20px;
-  border-radius: 12px;
-  text-align: center;
-  max-width: 400px;
-  width: 90%;
-}
-.modal-content img {
-  width: 100%;
-  border-radius: 10px;
-}
-.close {
-  float: right;
-  font-size: 22px;
-  cursor: pointer;
-}
-</style>
-
 <script>
+// Product data
 const products = {
-  atash: {
-    img: "images/atash.jpg",
-    title: "আটাশ চাউল",
-    price: "৳1450 / 25kg",
-    desc: "আটাশ চাল নরম ও সুস্বাদু, প্রতিদিনের রান্নার জন্য উপযুক্ত।"
-  },
-  unotrish: {
-    img: "images/unotrish.jpg",
-    title: "উনত্রিশ চাউল",
-    price: "৳1450 / 25kg",
-    desc: "উনত্রিশ চাল উচ্চ মানের, ভাত ঝরঝরে হয়।"
-  },
-  madhoby: {
-    img: "images/madhoby.jpg",
-    title: "মাধবী চাউল",
-    price: "৳1550 / 25kg",
-    desc: "মাধবী চাল সুস্বাদু ও মানসম্মত।"
-  },
-  katari: {
-    img: "images/kataribhog.jpg",
-    title: "কাটারী চাউল",
-    price: "৳1800 / 25kg",
-    desc: "কাটারী চাল সুগন্ধি ও ঝরঝরে ভাতের জন্য বিখ্যাত।"
-  },
-  guti: {
-    img: "images/guti.jpg",
-    title: "গুটি (মোটা) চাউল",
-    price: "৳1400 / 25kg",
-    desc: "গুটি চাল মোটা দানার, খেতে মজাদার।"
-  },
-  vanga: {
-    img: "images/vanga.jpg",
-    title: "ভাঙ্গা চাল (খুদ)",
-    price: "৳---",
-    desc: "ভাঙ্গা চাল খিচুড়ি ও অন্যান্য খাবারের জন্য ভালো।"
-  },
-  kura: {
-    img: "images/images (8).jpeg",
-    title: "কুঁড়া",
-    price: "৳---",
-    desc: "কুঁড়া পশুখাদ্য হিসেবে ব্যবহৃত হয়।"
-  }
+  atash: { img:"images/atash.jpg", title:"আটাশ চাউল", price:"৳1450 / 25kg", desc:"আটাশ চাল নরম ও সুস্বাদু, প্রতিদিনের রান্নার জন্য উপযুক্ত।" },
+  unotrish: { img:"images/unotrish.jpg", title:"উনত্রিশ চাউল", price:"৳1450 / 25kg", desc:"উনত্রিশ চাল উচ্চ মানের, ভাত ঝরঝরে হয়।" },
+  madhoby: { img:"images/madhoby.jpg", title:"মাধবী চাউল", price:"৳1550 / 25kg", desc:"মাধবী চাল সুস্বাদু ও মানসম্মত।" },
+  katari: { img:"images/kataribhog.jpg", title:"কাটারী চাউল", price:"৳1800 / 25kg", desc:"কাটারী চাল সুগন্ধি ও ঝরঝরে ভাতের জন্য বিখ্যাত।" },
+  guti: { img:"images/guti.jpg", title:"গুটি (মোটা) চাউল", price:"৳1400 / 25kg", desc:"গুটি চাল মোটা দানার, খেতে মজাদার।" },
+  vanga: { img:"images/vanga.jpg", title:"ভাঙ্গা চাল (খুদ)", price:"৳---", desc:"ভাঙ্গা চাল খিচুড়ি ও অন্যান্য খাবারের জন্য ভালো।" },
+  kura: { img:"images/images (8).jpeg", title:"কুঁড়া", price:"৳---", desc:"কুঁড়া পশুখাদ্য হিসেবে ব্যবহৃত হয়।" }
 };
 
-function openModal(key) {
+// Open modal
+function openModal(key){
+  const modal = document.getElementById("modal");
   document.getElementById("modal-img").src = products[key].img;
   document.getElementById("modal-title").innerText = products[key].title;
   document.getElementById("modal-price").innerText = products[key].price;
   document.getElementById("modal-desc").innerText = products[key].desc;
-  document.getElementById("modal").style.display = "flex";
+  modal.style.display = "flex";
 }
-function closeModal() {
+
+// Close modal
+function closeModal(){
   document.getElementById("modal").style.display = "none";
 }
-</script>
-      </div>
-    </div>
-  </section>
 
-  <!-- Modal -->
-  <div id="productModal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal()">&times;</span>
-      <img id="modalImg" src="" alt="">
-      <h3 id="modalTitle"></h3>
-      <p id="modalPrice"></p>
-      <p id="modalDesc"></p>
-    </div>
-  </div>
+// Close modal on background click
+function backgroundClick(event){
+  if(event.target === document.getElementById("modal")){
+    closeModal();
+  }
+}
+
+// Close modal on ESC key
+document.addEventListener("keydown", function(event){
+  if(event.key === "Escape"){
+    closeModal();
+  }
+});
+</script>
 
   <!-- Location -->
   <section id="location">
