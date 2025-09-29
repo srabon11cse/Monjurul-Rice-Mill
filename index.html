@@ -7,138 +7,254 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: url('images/rice-bg.jpg') no-repeat center center fixed;
-      background-size: cover;
+      margin: 0; padding: 0;
+      background: #f9f9f9;
     }
     header {
-      background: rgba(0,0,0,0.6);
-      color: white;
-      padding: 20px;
+      background: #2c3e50;
+      color: #fff;
+      padding: 15px;
       text-align: center;
     }
-    section {
-      background: rgba(255,255,255,0.9);
-      margin: 20px;
-      padding: 20px;
-      border-radius: 10px;
+    header h1 { margin: 0; }
+    .btn-container { margin-top: 10px; }
+    .btn {
+      display: inline-block;
+      margin: 5px;
+      padding: 10px 20px;
+      border-radius: 25px;
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+      transition: 0.3s;
     }
-    h2 {
-      text-align: center;
-      color: #333;
-    }
+    .btn-phone { background: #27ae60; }
+    .btn-phone:hover { background: #219150; }
+    .btn-whatsapp { background: #25d366; }
+    .btn-whatsapp:hover { background: #1ebe5d; }
+
+    section { padding: 40px 20px; }
+    h2 { text-align: center; margin-bottom: 20px; }
+
+    /* Products */
     .products {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 20px;
     }
     .product {
       background: #fff;
-      padding: 10px;
-      border-radius: 10px;
-      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+      border-radius: 12px;
+      padding: 15px;
       text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: transform 0.2s;
     }
+    .product:hover { transform: scale(1.05); }
     .product img {
-      width: 100%;
-      height: 150px;
-      object-fit: cover;
-      border-radius: 8px;
+      width: 100%; height: 150px;
+      object-fit: cover; border-radius: 8px;
     }
-    .whatsapp-btn {
-      display: inline-block;
-      background: #25D366;
-      color: white;
-      padding: 12px 20px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      margin: 10px 0;
-    }
-    .whatsapp-btn:hover {
-      background: #20b358;
-    }
-    footer {
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
       background: rgba(0,0,0,0.6);
-      color: white;
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      width: 90%; max-width: 400px;
       text-align: center;
-      padding: 10px;
+      position: relative;
     }
-    iframe {
-      width: 100%;
-      height: 300px;
-      border: none;
-      border-radius: 10px;
+    .modal-content img {
+      width: 100%; height: auto; margin-bottom: 15px;
     }
+    .close {
+      position: absolute;
+      top: 10px; right: 15px;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    /* Footer */
+    footer {
+      background: #2c3e50; color: #fff;
+      text-align: center; padding: 15px;
+    }
+
+    /* Floating WhatsApp */
+    .whatsapp-float {
+      position: fixed;
+      width: 55px;
+      height: 55px;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25d366;
+      color: #fff;
+      border-radius: 50%;
+      text-align: center;
+      font-size: 28px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      z-index: 100;
+      line-height: 55px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    .whatsapp-float:hover { background-color: #1ebe5d; }
   </style>
 </head>
 <body>
+
   <header>
     <h1>Monjurul Rice Mill</h1>
     <p>Harinakanda Bazar, Ghoradhap, Jamalpur</p>
-    <p>📞 <a href="tel:+8801715371713" style="color:white;">01715371713</a></p>
-    <a class="whatsapp-btn" href="https://wa.me/8801568501525" target="_blank">💬 Chat on WhatsApp</a>
+    <div class="btn-container">
+      <a href="tel:01715371713" class="btn btn-phone">📞 Call Now</a>
+      <a href="https://wa.me/8801568501525" target="_blank" class="btn btn-whatsapp">💬 WhatsApp</a>
+    </div>
   </header>
 
-  <section>
-    <h2>About Us</h2>
-    <p>
-      আমাদের রাইস মিল এলাকাবাসীর জন্য নির্ভরযোগ্য ধান-চাল প্রক্রিয়াকরণ কেন্দ্র। এখানে আধুনিক যন্ত্রপাতির মাধ্যমে ধান থেকে মানসম্মত চাল উৎপাদন করা হয়। আমরা কৃষকদের কাছ থেকে সরাসরি ধান সংগ্রহ করি এবং গ্রাহকদের কাছে পরিষ্কার ও মানসম্মত চাল সরবরাহ করি। দ্রুত ও সঠিক পরিষেবার জন্য এলাকায় আমাদের মিল পরিচিত। ন্যায্য দামে চাল, ভাঙ্গা চাল ও অন্যান্য উপ-পণ্য পাওয়া যায়।
+  <!-- About -->
+  <section id="about">
+    <h2>আমাদের সম্পর্কে</h2>
+    <p style="max-width: 700px; margin: auto; text-align: center;">
+      আমাদের রাইস মিল এলাকাবাসীর জন্য নির্ভরযোগ্য ধান-চাল প্রক্রিয়াকরণ কেন্দ্র।
+      এখানে আধুনিক যন্ত্রপাতির মাধ্যমে ধান থেকে মানসম্মত চাল উৎপাদন করা হয়।
+      আমরা কৃষকদের কাছ থেকে সরাসরি ধান সংগ্রহ করি এবং গ্রাহকদের কাছে পরিষ্কার ও মানসম্মত চাল সরবরাহ করি।
+      দ্রুত ও সঠিক পরিষেবার জন্য এলাকায় আমাদের মিল পরিচিত।
+      ন্যায্য দামে চাল, ভাঙ্গা চাল ও অন্যান্য উপ-পণ্য পাওয়া যায়।
     </p>
   </section>
 
-  <section>
-    <h2>Our Products (25kg Bag)</h2>
+  <!-- Products -->
+  <section id="products">
+    <h2>আমাদের পণ্য (25kg Bag)</h2>
     <div class="products">
-      <div class="product">
+      <div class="product" onclick="openModal('atash')">
         <img src="images/atash.jpg" alt="Atash Rice">
-        <h3>আটাশ চাউল</h3>
-        <p>৳1450 / 25kg</p>
+        <h3>আটাশ চাউল</h3><p>৳1450 / 25kg</p>
       </div>
-      <div class="product">
-        <img src="images/unotrish.jpg" alt="Unnotrish Rice">
-        <h3>উনত্রিশ চাউল</h3>
-        <p>৳1450 / 25kg</p>
+      <div class="product" onclick="openModal('unotrish')">
+        <img src="images/unotrish.jpg" alt="Unotrish Rice">
+        <h3>উনত্রিশ চাউল</h3><p>৳1450 / 25kg</p>
       </div>
-      <div class="product">
+      <div class="product" onclick="openModal('madhoby')">
         <img src="images/madhoby.jpg" alt="Madhobi Rice">
-        <h3>মাধবী চাউল</h3>
-        <p>৳1550 / 25kg</p>
+        <h3>মাধবী চাউল</h3><p>৳1550 / 25kg</p>
       </div>
-      <div class="product">
+      <div class="product" onclick="openModal('kataribhog')">
         <img src="images/kataribhog.jpg" alt="Katari Rice">
-        <h3>কাটারী চাউল</h3>
-        <p>৳1800 / 25kg</p>
+        <h3>কাটারী চাউল</h3><p>৳1800 / 25kg</p>
       </div>
-      <div class="product">
+      <div class="product" onclick="openModal('guti')">
         <img src="images/guti.jpg" alt="Guti Rice">
-        <h3>গুটি (মোটা) চাউল</h3>
-        <p>৳1400 / 25kg</p>
+        <h3>গুটি (মোটা) চাউল</h3><p>৳1400 / 25kg</p>
       </div>
-      <div class="product">
+      <div class="product" onclick="openModal('vanga')">
         <img src="images/vanga.jpg" alt="Vanga Chal">
-        <h3>ভাঙ্গা চাল (খুদ)</h3>
-        <p>৳---</p>
+        <h3>ভাঙ্গা চাল (খুদ)</h3><p>৳---</p>
       </div>
-      <div class="product">
+      <div class="product" onclick="openModal('kura')">
         <img src="images/images (8).jpeg" alt="Kura">
-        <h3>কুঁড়া</h3>
-        <p>৳---</p>
+        <h3>কুঁড়া</h3><p>৳---</p>
       </div>
     </div>
   </section>
 
-  <section>
-    <h2>📍 Our Location</h2>
+  <!-- Modal -->
+  <div id="productModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <img id="modalImg" src="" alt="">
+      <h3 id="modalTitle"></h3>
+      <p id="modalPrice"></p>
+      <p id="modalDesc"></p>
+    </div>
+  </div>
+
+  <!-- Location -->
+  <section id="location">
+    <h2>📍 আমাদের অবস্থান</h2>
     <iframe
-  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.143616152136!2d90.399452!3d23.777176!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x37562fd5d0e559a1%3A0xc011f8622fd2a402!2sMonjurul%20Rice%20mill%2C%20Harinakanda!5e0!3m2!1sen!2sbd!4v1695900000000"
-  width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy">
-</iframe>
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.143616152136!2d90.399452!3d23.777176!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x37562fd5d0e559a1%3A0xc011f8622fd2a402!2sMonjurul%20Rice%20mill%2C%20Harinakanda!5e0!3m2!1sen!2sbd!4v1695900000000"
+      width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy">
+    </iframe>
   </section>
 
   <footer>
-    <p>© 2025 Monjurul Rice Mill | Developed with ❤️</p>
+    <p>&copy; 2025 Monjurul Rice Mill</p>
   </footer>
+
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/8801568501525" class="whatsapp-float" target="_blank">💬</a>
+
+  <script>
+    const products = {
+      atash: {
+        title: "আটাশ চাউল",
+        price: "৳1450 / 25kg",
+        img: "images/atash.jpg",
+        desc: "সুস্বাদু আটাশ চাউল, প্রতিদিনের খাবারের জন্য উপযুক্ত।"
+      },
+      unotrish: {
+        title: "উনত্রিশ চাউল",
+        price: "৳1450 / 25kg",
+        img: "images/unotrish.jpg",
+        desc: "মানসম্মত উনত্রিশ চাউল, ভাতের জন্য জনপ্রিয়।"
+      },
+      madhoby: {
+        title: "মাধবী চাউল",
+        price: "৳1550 / 25kg",
+        img: "images/madhoby.jpg",
+        desc: "মাধবী চালের দানা সুন্দর ও সুস্বাদু।"
+      },
+      kataribhog: {
+        title: "কাটারী চাউল",
+        price: "৳1800 / 25kg",
+        img: "images/kataribhog.jpg",
+        desc: "সুগন্ধি ও লম্বা দানার কাটারী চাল।"
+      },
+      guti: {
+        title: "গুটি (মোটা) চাউল",
+        price: "৳1400 / 25kg",
+        img: "images/guti.jpg",
+        desc: "মোটা দানার গুটি চাল, সাশ্রয়ী ও পুষ্টিকর।"
+      },
+      vanga: {
+        title: "ভাঙ্গা চাল (খুদ)",
+        price: "৳---",
+        img: "images/vanga.jpg",
+        desc: "ভাঙ্গা চাল বা খুদ, পশুখাদ্য ও রান্নার জন্য উপযোগী।"
+      },
+      kura: {
+        title: "কুঁড়া",
+        price: "৳---",
+        img: "images/images (8).jpeg",
+        desc: "ধানের কুঁড়া, পশুখাদ্য হিসেবে ব্যবহৃত।"
+      }
+    };
+
+    function openModal(key) {
+      document.getElementById("modalTitle").innerText = products[key].title;
+      document.getElementById("modalPrice").innerText = products[key].price;
+      document.getElementById("modalImg").src = products[key].img;
+      document.getElementById("modalDesc").innerText = products[key].desc;
+      document.getElementById("productModal").style.display = "flex";
+    }
+
+    function closeModal() {
+      document.getElementById("productModal").style.display = "none";
+    }
+  </script>
 </body>
 </html>
