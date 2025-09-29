@@ -86,7 +86,7 @@
 
   <!-- Search Box -->
   <div style="text-align:center; margin-bottom:40px;">
-    <input type="text" id="searchBox" placeholder="পণ্য খুঁজুন..." onkeyup="searchItems()"
+    <input type="text" id="searchBox" placeholder="পণ্য খুঁজুন..."
            style="width:80%; max-width:500px; padding:14px 16px; font-size:16px; border:1px solid #ccc; border-radius:10px; outline:none; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
   </div>
 
@@ -127,18 +127,21 @@
   }
 </style>
 
-<!-- ================= JavaScript ================= -->
+<!-- ================= Working JavaScript ================= -->
 <script>
-  function searchItems() {
-    let input = document.getElementById('searchBox').value.toUpperCase();
-    let container = document.getElementById('productContainer');
-    let products = container.getElementsByClassName('product-card');
+  document.addEventListener("DOMContentLoaded", function() {
+    const input = document.getElementById('searchBox');
+    const container = document.getElementById('productContainer');
+    const products = container.getElementsByClassName('product-card');
 
-    for (let i = 0; i < products.length; i++) {
-      let text = products[i].textContent || products[i].innerText;
-      products[i].style.display = text.toUpperCase().indexOf(input) > -1 ? "block" : "none";
-    }
-  }
+    input.addEventListener('keyup', function() {
+      let filter = input.value.toUpperCase();
+      for (let i = 0; i < products.length; i++) {
+        let text = products[i].textContent || products[i].innerText;
+        products[i].style.display = text.toUpperCase().includes(filter) ? "block" : "none";
+      }
+    });
+  });
 </script>
   <section>
     <h2>About Us</h2>
